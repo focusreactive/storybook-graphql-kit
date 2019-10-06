@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Query } from '../../addon/decorator'
 
 export default {
@@ -7,43 +5,25 @@ export default {
 };
 
 const queryPages = /* GraphQL */ `
-  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
-    conf: conferenceBrand(where: { title: $conferenceTitle }) {
-      id
-      status
-      year: conferenceEvents(where: { year: $eventYear }) {
-        id
-        status
-        pages {
-          titleSeo
-          description
-          seoDescription
-          key
-          titlePage
-          pageSlogan
-          pageStatistics
-          locationTitle
-          themeColor {
-            hex
-          }
-          keywords
-          pageNavigation
-          pageSections
-        }
-      }
-    }
+  query ($conferenceTitle: ConferenceTitle, $eventYear: EventYear, $title: String) {
+  result: pages(where: {conferenceEvent: {year: $eventYear, conferenceBrand: {title: $conferenceTitle}}, titlePage_contains: $title}) {
+    id
+    seoDescription
+    titleSeo
+    key
+    description
+    titlePage
+    pageSlogan
+    locationTitle
   }
-`;
-
-const dataSelector = data => {
-  return data.conf.year[0].pieceOfTexts
 }
+`;
 
 const conferenceTitle = 'React_Day_Berlin';
 const eventYear = 'Y2019';
 
-export const brands = Query({ query: queryPages, dataSelector, vars: { conferenceTitle, eventYear } })
-export const events = Query({ query: queryPages, dataSelector, vars: { conferenceTitle, eventYear } })
-export const sponsors = Query({ query: queryPages, dataSelector, vars: { conferenceTitle, eventYear } })
-export const speakers = Query({ query: queryPages, dataSelector, vars: { conferenceTitle, eventYear } })
+export const brands = Query({ query: queryPages, vars: { conferenceTitle, eventYear }, searchVars: { title: 'React Day Berlin', description: 'React' }, viewId: '5f0d4bba1a384274b8259ed15cdcfea9' })
+export const events = Query({ query: queryPages, vars: { conferenceTitle, eventYear }, searchVars: { title: 'react day', description: 'React' }, viewId: '5f0d4bba1a384274b8259ed15cdcfea9' })
+export const sponsors = Query({ query: queryPages, vars: { conferenceTitle, eventYear }, searchVars: { title: 'react day', description: 'React' }, viewId: '5f0d4bba1a384274b8259ed15cdcfea9' })
+export const speakers = Query({ query: queryPages, vars: { conferenceTitle, eventYear }, searchVars: { title: 'react day', description: 'React' }, viewId: '5f0d4bba1a384274b8259ed15cdcfea9' })
 

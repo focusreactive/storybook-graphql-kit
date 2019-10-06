@@ -1,20 +1,33 @@
 import React from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-const Entry = ({ obj }) => <div><hr />{JSON.stringify(obj)}</div>
+import { parseResult } from '../lib/parse'
+import { createLink } from '../lib/links'
+import DefaultTable from './DefaultTable'
 
-const DecoratorUI = ({ context, getStory, isConnected, result, info, error, dataSelector }) => {
+const theme = createMuiTheme({
+  palette: {
+    themeColor: '#525252'
+  },
+});
+
+const DecoratorUI = ({ context, getStory, isConnected, result, info, error, dataSelector, viewCredentials, state }) => {
   if (!isConnected) {
     return getStory(context)
   }
 
-  if (!result) return <div>Loading...</div>
+  const isLoading = state === 'Loading';
 
-  const table = result.conf.year[0].pages; // dataSelector(result);
-  console.log("TCL: DecoratorUI -> table", table)
 
-  if (!table) return <div>Can't process</div>
+  const { columns, rows } = parseResult(result);
+  const createEntryLink = createLink(viewCredentials);
 
-  return table.map((obj, key) => <Entry key={key} obj={obj} />)
+  return (
+    <ThemeProvider theme={theme}>
+      <DefaultTable columns={columns} rows={rows} result={result} createEntryLink={createEntryLink} isLoading={isLoading}/>
+    </ThemeProvider>
+  );
 }
 
-export default DecoratorUI
+export default DecoratorUI;

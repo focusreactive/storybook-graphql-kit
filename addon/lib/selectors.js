@@ -12,3 +12,13 @@ export const getCredentials = store => {
 export const getResult = store => store.result;
 export const getError = store => store.queryError;
 export const getDataSelector = store => store.dataSelector;
+
+export const getViewCredentials = ({ viewId, projectId, stage }) => ({ viewId, projectId, stage });
+export const getSearchVars = ({ searchVars }) => searchVars;
+
+export const getRequestState = ({loading, queryError, result}) => {
+  if (queryError) return 'Error';
+  if (loading || !result) return 'Loading';
+  if (result) return 'Success';
+  return 'Error';
+}

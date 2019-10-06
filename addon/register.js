@@ -1,15 +1,19 @@
 import { register } from '@storybook/addon-devkit'
 
 import PanelUI from './PanelUI'
-import { contentRequest } from './lib/actions'
+import { startRequest, contentRequest, updateSearch } from './lib/actions'
+import { getSearchVars } from './lib/selectors'
+import './config'
 
 const selectors = {
-  info: store => JSON.stringify(store),
+  searchVars: getSearchVars,
   isConnected: store => store.isConnected,
 };
 
 const actions = ({ global, local }) => ({
   request: local(contentRequest),
+  search: local(updateSearch),
+  startRequest: local(startRequest),
 })
 
 register(selectors,

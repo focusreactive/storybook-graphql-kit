@@ -7,7 +7,7 @@ import brandImage from '../docs/logo.png';
 const CMS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoxLCJ0b2tlbklkIjoiN2Y5ZTE0YzYtOTUwZi00M2Q1LWI0NmQtZmVlNDAzNGQ1MGU4In0.-ciA-_yc1XybCAo7E7JNax_CkGxmbekjn7guE2moNro'
 const CMS_ENDPOINT = 'https://api-euwest.graphcms.com/v1/ck0qr5av4094801d49206aeqn/master'
 
-addDecorator(withGraphCMS({ endpoint: CMS_ENDPOINT, token: CMS_TOKEN }))
+addDecorator(withGraphCMS({ endpoint: CMS_ENDPOINT, token: CMS_TOKEN, projectId: '8be1ceff148c4b749e78b34007f9cc34', stage: 'master' }))
 
 const theme = create({
   base: 'light',

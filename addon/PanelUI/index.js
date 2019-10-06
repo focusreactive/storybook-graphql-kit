@@ -1,18 +1,36 @@
 import React from 'react';
+import { Layout, Block } from '@storybook/addon-devkit';
+import { styled } from '@storybook/theming';
+import SearchInputs from './SearchInputs'
 
-const Panel = ({ request, kind, story, isFirstDataReceived }) => {
+const LayoutBlock = styled(Layout)`
+  margin: 0px;
+  height: 100px;
+`
+
+const AddonBlock = styled(Block)`
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 8px;
+`
+
+const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, searchVars, search }) => {
   React.useEffect(() => {
     if (isFirstDataReceived) {
+      startRequest();
       request();
     }
-  }, [kind, story, request, isFirstDataReceived]);
+  }, [kind, story, request, startRequest, isFirstDataReceived, searchVars]);
 
   if (!isFirstDataReceived) return null;
 
-  return (<div>
-    <p>GrapCMS Panel</p>
-    <button onClick={() => request()} >Request</button>
-  </div>)
+  return (<LayoutBlock>
+    <AddonBlock size={'30%'}>
+      <SearchInputs search={searchVars} onChange={search} />
+    </AddonBlock>
+    <AddonBlock>
+    </AddonBlock>
+  </LayoutBlock>)
 }
 
-export default Panel
+export default Panel;
