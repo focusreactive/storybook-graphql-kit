@@ -5,8 +5,6 @@ export default {
 };
 
 const viewId = 'e981e312fd6c48a39230de9193be4db9';
-const conferenceTitle = 'React_Day_Berlin';
-const eventYear = 'Y2019';
 
 const query = /* GraphQL */ `
   query ($conferenceTitle: ConferenceTitle, $eventYear: EventYear, $name: String) {

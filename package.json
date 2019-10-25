@@ -1,5 +1,5 @@
 {
-  "name": "custom-ui",
+  "name": "@focusreactive/storybook-addon-graphcms",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +17,8 @@
   "scripts": {
     "start": "start-storybook -p 9009 -s public --ci",
     "test": "react-scripts test",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@storybook/addon-console": "^1.2.1",
+    "@storybook/storybook-deployer": "^2.8.1",
     "react-scripts": "3.2.0",
     "url-loader": "^2.2.0"
   }
