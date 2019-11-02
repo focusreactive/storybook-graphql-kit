@@ -1,9 +1,8 @@
-import { createDecorator } from '@storybook/addon-devkit'
-import { setParameters } from '@storybook/addon-devkit'
+import { createDecorator, setParameters } from '@storybook/addon-devkit';
 
-import DecoratorUI from './DecoratorUI'
-import { getError, getDataSelector, getViewCredentials, getRequestState } from './lib/selectors'
-import './config'
+import DecoratorUI from './DecoratorUI';
+import { getError, getDataSelector, getViewCredentials, getRequestState } from './lib/selectors';
+import './config';
 
 const selectors = {
   info: store => JSON.stringify(store),
@@ -17,16 +16,15 @@ const selectors = {
 
 export const withGraphCMS = createDecorator({
   ...selectors,
-},
-)(DecoratorUI, { isGlobal: false });
+})(DecoratorUI, { isGlobal: false });
 
-export const QueryParams = setParameters()
+export const QueryParams = setParameters();
 
 export const Query = ({ name, ...rest }) => {
   const storyFn = () => null;
   storyFn.story = {
     name,
-    parameters: QueryParams({ ...rest, isConnected: true, loading: true })
-  }
+    parameters: QueryParams({ ...rest, isConnected: true, loading: true }),
+  };
   return storyFn;
-}
+};

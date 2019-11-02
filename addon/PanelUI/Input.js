@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
@@ -26,17 +25,17 @@ export default function Input({ value, onChange, label }) {
 
   const onKeyPress = ev => {
     ev.stopPropagation();
-    const key = ev.key;
-    const value = ev.target.value;
+    const { key } = ev;
+    const v = ev.target.value;
     if (key === 'Enter') {
       ev.preventDefault();
-      onChange(value)
+      onChange(v);
     }
-  }
+  };
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
-        <TextField
+      <TextField
         id="outlined-name"
         label={label}
         className={classes.textField}
@@ -47,5 +46,5 @@ export default function Input({ value, onChange, label }) {
         variant="outlined"
       />
     </form>
-    );
+  );
 }

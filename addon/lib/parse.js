@@ -1,84 +1,128 @@
-const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
-  {
-    id: 'population',
-    label: 'Population',
-    minWidth: 170,
+import { renderLinkAction, renderImage } from './renderValues';
+
+const textColumnWidth = 300;
+const simpleColumnWidth = 100;
+
+const arrayValue = ({ key, value }) => {
+  if (!Array.isArray(value)) return null;
+  return {
+    id: key,
+    getLabel: () => `[${key}]`,
+    getValue: () => `[${value.length}]`,
+    minWidth: simpleColumnWidth,
     align: 'right',
-    format: value => value.toLocaleString(),
-  },
-  {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
-    minWidth: 170,
-    align: 'right',
-    format: value => value.toLocaleString(),
-  },
-  {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: value => value.toFixed(2),
-  },
-];
+    render: null,
+  };
+};
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
+const objectValue = ({ key, value, options }) => {
+  if (typeof value !== 'object' || value === null) return null;
+  // eslint-disable-next-line no-use-before-define
+  const columns = extractColumns(options)(value);
+  return columns.map(entry => ({
+    ...entry,
+    id: `${key}-${entry.id}`,
+  }));
+};
 
-const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
-];
-
-const idColumn = {
-  id: 'id',
-  label: 'ID',
-  minWidth: 50,
-  align: 'left',
-  format: value => value.toLocaleString(),
-  action: 'onClick',
-}
-
-export const parseResult = result => {
-  const isArray = Array.isArray(result);
-  const keyObj = isArray ? result[0] : result;
-  if (!keyObj) {
-    return { columns: [idColumn], rows: [] }
+const imageValue = ({ key, value, ind }) => {
+  const url = key === 'url' ? value : value.url;
+  if (!url) return null;
+  if (url.mimeType) {
+    if (!/^image/.test(url.mimeType)) return null;
   }
-  const keys = Object.keys(keyObj);
+  return {
+    // eslint-disable-next-line no-use-before-define
+    ...unknownValue({ key, value, ind }),
+    render: renderImage({ url, value }),
+  };
+};
 
-  const keyColumns = keys.map((key, i) => {
-    if (key === 'id') return idColumn
-    return ({
-      id: key,
-      label: key,
-      minWidth: i === 1 ? 300 : 100,
-      align: i === 1 ? 'left' : 'right',
-      format: value => value.toLocaleString(),
-      action: null,
-    })
-  })
+const simpleValue = ({ key, value, ind }) => {
+  if (Array.isArray(value)) return null;
+  if (typeof value === 'object' && value !== null) return null;
+  return {
+    id: key,
+    getLabel: () => `${key}`,
+    getValue: () => value,
+    minWidth: ind === 1 ? textColumnWidth : simpleColumnWidth,
+    align: ind === 1 ? 'left' : 'right',
+    render: null,
+  };
+};
 
-  const columns = keyColumns;
+const idValue = ({ key, value, ind, options }) => {
+  const simple = simpleValue({ key, value, ind });
+  if (!simple) return null;
+  if (simple.id !== 'id') return null;
 
-  const rows = isArray ? result : [result];
+  return {
+    ...simple,
+    getLabel: () => 'ID',
+    render: renderLinkAction({ entryId: value, ...options }),
+  };
+};
 
-  return { columns, rows }
-}
+const unknownValue = ({ key, value, ind }) => ({
+  id: key,
+  getLabel: () => `${key}`,
+  getValue: () => {
+    try {
+      return `${value}`;
+    } catch (err) {
+      return '???';
+    }
+  },
+  minWidth: ind === 1 ? textColumnWidth : simpleColumnWidth,
+  align: ind === 1 ? 'left' : 'right',
+  render: null,
+});
+
+const valueTypesOrder = [arrayValue, imageValue, objectValue, idValue, simpleValue, unknownValue];
+
+const extractEntry = (key, value, ind, options) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const tryExtract of valueTypesOrder) {
+    try {
+      const entry = tryExtract({ key, value, ind, options });
+      if (entry) return entry;
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err);
+      return unknownValue({ key, value, ind });
+    }
+  }
+  return unknownValue({ key, value, ind });
+};
+
+const flatMap = (array, fn) =>
+  array.reduce((acc, item) => {
+    const newItem = fn(item);
+    return Array.isArray(newItem) ? [...acc, ...newItem] : [...acc, newItem];
+  }, []);
+
+const extractColumns = options => keyObj => {
+  const entries = Object.entries(keyObj);
+
+  const columns = flatMap(entries, (entry, i) => extractEntry(...entry, i, options));
+
+  return columns;
+};
+
+export const parseResult = (result, options) => {
+  const isArray = Array.isArray(result);
+  const resultArray = isArray ? result : [result];
+  const keyObj = resultArray[0];
+  if (!keyObj) {
+    // TODO: align with API
+    return { columns: [], rows: [] };
+  }
+  const createColumns = extractColumns(options);
+  const columns = createColumns(keyObj);
+  const rows = resultArray.map(row => ({
+    id: row.id,
+    columns: createColumns(row),
+  }));
+
+  return { columns, rows };
+};
