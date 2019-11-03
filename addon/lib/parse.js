@@ -26,7 +26,7 @@ const objectValue = ({ key, value, options }) => {
 };
 
 const imageValue = ({ key, value, ind }) => {
-  const url = key === 'url' ? value : value.url;
+  const url = key === 'url' ? value : value && value.url;
   if (!url) return null;
   if (url.mimeType) {
     if (!/^image/.test(url.mimeType)) return null;

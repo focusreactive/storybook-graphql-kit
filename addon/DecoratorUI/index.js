@@ -13,12 +13,18 @@ const theme = createMuiTheme({
 
 const DecoratorUI = ({ context, getStory, isConnected, result, viewCredentials, state }) => {
   if (!isConnected) {
-    return getStory(context);
+    return null;
   }
 
   const isLoading = state === 'Loading';
+  const isLoaded = state === 'Success';
 
   const { columns, rows } = parseResult(result, { viewCredentials });
+
+  if (isLoaded) {
+    const story = getStory({ ...context, graphQlResponse: { result, columns, rows } });
+    if (story) return story;
+  }
 
   return (
     <ThemeProvider theme={theme}>

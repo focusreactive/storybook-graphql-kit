@@ -41,7 +41,6 @@
     "@storybook/addon-console": "^1.2.1",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-eslint": "^10.0.3",
-    "eslint": "^4.3.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-import": "^2.7.0",

@@ -20,11 +20,11 @@ export const withGraphCMS = createDecorator({
 
 export const QueryParams = setParameters();
 
-export const Query = ({ name, ...rest }) => {
-  const storyFn = () => null;
-  storyFn.story = {
+export const Query = ({ name, story = () => null, ...rest }) => {
+  // eslint-disable-next-line no-param-reassign
+  story.story = {
     name,
     parameters: QueryParams({ ...rest, isConnected: true, loading: true }),
   };
-  return storyFn;
+  return story;
 };
