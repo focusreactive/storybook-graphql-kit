@@ -1,8 +1,6 @@
 # Storybook Addon GraphCMS
 
-<img src="docs/storybook-logo.svg" height="60" alt="Storybook">
-<img src="docs/graphcms-logo.png" height="60" alt="GraphCMS">
-<img src="docs/focusreactive-logo.svg" height="60" alt="FocusReactive">
+![Logos](docs/all-logos.png)
 
 Write GraphQL queries and pass response data to your components
 
@@ -12,7 +10,7 @@ Write GraphQL queries and pass response data to your components
 
 Develop your components in isolation with actual backend stored data. With this addon you can add query to your stories and use fetched data as props for your components. You are flexible to use it with a single component or return an array of components - everything you need is just to write stories.
 
-[live demo]()
+[live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/with-react-components--ram)
 
 ![Screenshot1](docs/screenshot-example1.png)
 
@@ -20,7 +18,7 @@ Develop your components in isolation with actual backend stored data. With this 
 
 You can simply use Storybook and this addon for rapid development of tools to browse your GraphQL endpoint. Just write the queries for data you want to show and it will be outputted as a table. If you have arrays, nested objects or images inside your query it will be turned to friendly visible form. Good for documenting things withing your team.
 
-[live demo]()
+[live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/speakers--rdb)
 
 ![Screenshot2](docs/screenshot-example2.png)
 
@@ -29,7 +27,7 @@ You can simply use Storybook and this addon for rapid development of tools to br
 Same as previous but if you provide you project and view IDs it will be possible to open any entry for editing in your GraphCMS app.
 
 
-[live demo]()
+[live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/events-react-amsterdam--pages)
 
 ![Screenshot3](docs/screenshot-example3.png)
 
@@ -160,11 +158,12 @@ Here we writing queries to control what exact entries should be listed in each f
 
 ## Features
 
-1. Expands nested objects to display in flat table
-2. Detects `url` fields with image sources and outputs them
-3. Input fields for GraphQL variables in the addon panel
-4. Handles GraphQL requests and renders story only with successfully received data
-5. Works fine with any GraphQL endpoint but provides additional features for GraphCMS services
+1. You don't need to write `stories` or even use `React` if you only want to view the results of queries. It has convenient default UI to display your data.
+2. Expands nested objects to display in flat table
+3. Detects `url` fields with image sources and outputs them
+4. Input fields for GraphQL variables in the addon panel
+5. Handles GraphQL requests and renders story only with successfully received data
+6. Works fine with any GraphQL endpoint but provides additional features for GraphCMS services
 
 ## API
 
