@@ -7,11 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import EditIcon from '@material-ui/icons/Edit';
 import LinearProgress from '@material-ui/core/LinearProgress';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,15 +55,7 @@ const StyledTableRow = withStyles(theme => ({
   },
 }))(TableRow);
 
-const LinkAction = ({ url, classes, id }) => (
-  <Tooltip title={`Edit entry ${id} in GraphCMS`}>
-    <IconButton href={url} target="_blank" variant="extended" aria-label="delete" className={classes.fab} size="small">
-      <EditIcon className={classes.extendedIcon} />
-    </IconButton>
-  </Tooltip>
-)
-
-const DefaultTable = ({ columns, rows, createEntryLink, isLoading }) => {
+const DefaultTable = ({ columns, rows, isLoading }) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -93,59 +81,59 @@ const DefaultTable = ({ columns, rows, createEntryLink, isLoading }) => {
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                 >
-                  {column.label}
+                  {column.getLabel()}
                 </StyledTableCell>
               ))}
             </TableRow>
           </TableHead>
 
-          {!isLoading && <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-              return (
+          {!isLoading && (
+            <TableBody>
+              {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                 <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                  {columns.map(column => {
-                    const value = row[column.id];
-                    const action = column.action ? createEntryLink(value) : null;
-                    const formatedValue = column.format && typeof value === 'number' ? column.format(value) : value
-                    const output = formatedValue;
-                    let formatedOutput = `${output}`
-                    if (Array.isArray(output)) {
-                      formatedOutput = `[${output.length}]`
-                    }
-                    return (
-                      <StyledTableCell key={column.id} align={column.align}>
-                        {action ? <LinkAction url={action} classes={classes} id={value} /> : formatedOutput}
-                      </StyledTableCell>
-                    );
-                  })}
+                  {row.columns.map(column => (
+                    // const value = row[column.id];
+                    // const action = column.action ? createEntryLink(value) : null;
+                    // const formatedValue = column.format && typeof value === 'number' ? column.format(value) : value
+                    // const output = formatedValue;
+                    // let formatedOutput = `${output}`
+                    // if (Array.isArray(output)) {
+                    //   formatedOutput = `[${output.length}]`
+                    // }
+                    <StyledTableCell key={column.id} align={column.align}>
+                      {column.render ? column.render() : column.getValue()}
+                    </StyledTableCell>
+                  ))}
                 </StyledTableRow>
-              );
-            })}
-          </TableBody>}
+              ))}
+            </TableBody>
+          )}
         </Table>
-
       </div>
-      {isLoading && <div className={classes.progress}>
-        <LinearProgress />
-      </div>
-      }
-      {!isLoading && <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        backIconButtonProps={{
-          'aria-label': 'previous page',
-        }}
-        nextIconButtonProps={{
-          'aria-label': 'next page',
-        }}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />}
+      {isLoading && (
+        <div className={classes.progress}>
+          <LinearProgress />
+        </div>
+      )}
+      {!isLoading && (
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          backIconButtonProps={{
+            'aria-label': 'previous page',
+          }}
+          nextIconButtonProps={{
+            'aria-label': 'next page',
+          }}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      )}
     </Paper>
   );
-}
+};
 
 export default DefaultTable;
