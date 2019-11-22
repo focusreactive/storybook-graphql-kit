@@ -6,7 +6,7 @@
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-devkit": "^1.2.0",
+    "@storybook/addon-devkit": "^1.2.4",
     "@storybook/addon-links": "^5.2.1",
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
@@ -14,13 +14,18 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
+  "relativeDependencies": {
+    "@storybook/addon-devkit": "../../theming/addon-development-kit"
+  },
   "scripts": {
     "start": "start-storybook -p 9009 -s public --ci",
     "test": "react-scripts test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build-storybook": "build-storybook -s public",
-    "deploy": "storybook-to-ghpages"
+    "deploy": "storybook-to-ghpages",
+    "postinstall": "relative-deps",
+    "prestart": "relative-deps"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +56,7 @@
     "eslint-plugin-react": "^7.1.0",
     "prettier": "^1.5.3",
     "react-scripts": "3.2.0",
+    "relative-deps": "^0.2.0",
     "url-loader": "^2.2.0"
   }
 }

@@ -1,8 +1,12 @@
 # Storybook Addon GraphCMS
 
-![Logos](docs/all-logos.png)
+[![Storybook](docs/storybook-logo.png)](https://storybook.js.org/)
+[![GraphQL](docs/graphql.png)](https://graphql.org/)
+[![GraphCMS](docs/graphcms-logo.png)](https://graphcms.com/)
 
-Write GraphQL queries and pass response data to your components
+Write GraphQL queries and pass response data to your components **or just display them**
+
+Read the [post on medium](https://medium.com/@FocusReactive/storybook-addon-graphcms-9d47e30371df)
 
 ## Why you want to use it
 
@@ -240,3 +244,7 @@ To develop this project:
 
 <div align="left" style="height: 16px;">Created with ❤︎ to <b>GraphCMS</b> and <b>GraphQL</b> community by <a href="https://twitter.com/UsulPro">Oleg Proskurin</a> at <a href="https://focusreactive.com/">FocusReactive</a>
 </div>
+
+2019
+
+[![FocusReactive](doc/../docs/focusreactive-logo.svg)](https://focusreactive.com)

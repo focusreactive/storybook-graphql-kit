@@ -18,7 +18,7 @@ const query = /* GraphQL */ `
       }
     ) {
       id
-      bio
+      # bio
       name
       talks {
         title
