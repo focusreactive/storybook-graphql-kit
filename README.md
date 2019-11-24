@@ -1,12 +1,12 @@
 # Storybook Addon GraphCMS
 
-[![Storybook](docs/storybook-logo.png)](https://storybook.js.org/)
-[![GraphQL](docs/graphql.png)](https://graphql.org/)
-[![GraphCMS](docs/graphcms-logo.png)](https://graphcms.com/)
+[![Storybook](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/storybook-logo.png)](https://storybook.js.org/)
+[![GraphQL](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/graphql.png)](https://graphql.org/)
+[![GraphCMS](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/graphcms-logo.png)](https://graphcms.com/)
 
 Write GraphQL queries and pass response data to your components **or just display them**
 
-Read the [post on medium](https://medium.com/@FocusReactive/storybook-addon-graphcms-9d47e30371df)
+Read the [post on medium](https://medium.com/@focus-reactive/storybook-addon-graphcms-9d47e30371df)
 
 ## Why you want to use it
 
@@ -16,7 +16,7 @@ Develop your components in isolation with actual backend stored data. With this 
 
 [live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/with-react-components--ram)
 
-![Screenshot1](docs/screenshot-example1.png)
+![Screenshot1](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example1.png)
 
 ### 2. Browse database
 
@@ -24,7 +24,7 @@ You can simply use Storybook and this addon for rapid development of tools to br
 
 [live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/speakers--rdb)
 
-![Screenshot2](docs/screenshot-example2.png)
+![Screenshot2](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example2.png)
 
 ### 3. Extend your GraphCMS UI
 
@@ -33,14 +33,14 @@ Same as previous but if you provide you project and view IDs it will be possible
 
 [live demo](https://usulpro.github.io/storybook-addon-graphcms/?path=/story/events-react-amsterdam--pages)
 
-![Screenshot3](docs/screenshot-example3.png)
+![Screenshot3](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example3.png)
 
 ## Usage
 
 Install addon
 
 ```shell
-yarn add --dev @focusreactive/storybook-addon-graphcms
+yarn add --dev @focus-reactive/storybook-addon-graphcms
 ```
 
 Add addon to your Storybook
@@ -48,7 +48,7 @@ Add addon to your Storybook
 ```js
 // addons.js
 
-import "@focusreactive/storybook-addon-graphcms/register";
+import "@focus-reactive/storybook-addon-graphcms/register";
 ```
 
 Configure addon
@@ -56,7 +56,7 @@ Configure addon
 ```js
 // config.js or in your stories.js
 import { addDecorator } from '@storybook/react';
-import { withGraphCMS } from "@focusreactive/storybook-addon-graphcms";
+import { withGraphCMS } from "@focus-reactive/storybook-addon-graphcms";
 
 addDecorator(
   withGraphCMS({
@@ -76,7 +76,7 @@ Write stories
 ```js
 // stories.js
 
-import { QueryParams } from '@focusreactive/storybook-addon-graphcms';
+import { QueryParams } from '@focus-reactive/storybook-addon-graphcms';
 
 export default {
   title: 'Browse GraphQL',
@@ -134,10 +134,10 @@ Note some details here:
 3. You can pass variables in `vars` and `searchVars` fields to the query as you usually do for GraphQL requests. The difference of `searchVars` is that there will be input fields in the addon panel and users can use them for searching
 4. Settings passed to `withGraphCMS` and to `QueryParams` are merged into one object before using. You can pass them in any order or even use only one of them. Just do it in the most convenient way for you
 
-Instead of passing options to the story how it's shown above you can `import { Query } from '@focusreactive/storybook-addon-graphcms';` and pass all options via this helper:
+Instead of passing options to the story how it's shown above you can `import { Query } from '@focus-reactive/storybook-addon-graphcms';` and pass all options via this helper:
 
 ```js
-import { Query } from '@focusreactive/storybook-addon-graphcms';
+import { Query } from '@focus-reactive/storybook-addon-graphcms';
 
 export const speakers = Query({
   name: 'Conference Speakers',
@@ -242,9 +242,9 @@ To develop this project:
 
 ## Credits
 
-<div align="left" style="height: 16px;">Created with ❤︎ to <b>GraphCMS</b> and <b>GraphQL</b> community by <a href="https://twitter.com/UsulPro">Oleg Proskurin</a> at <a href="https://focusreactive.com/">FocusReactive</a>
+<div align="left" style="height: 16px;">Created with ❤︎ to <b>GraphCMS</b> and <b>GraphQL</b> community by <a href="https://twitter.com/UsulPro">Oleg Proskurin</a> at <a href="https://twitter.com/FocusReactive">FocusReactive</a>
 </div>
 
 2019
 
-[![FocusReactive](doc/../docs/focusreactive-logo.svg)](https://focusreactive.com)
+[![FocusReactive](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/focusreactive-logo.svg?sanitize=true)](https://focusreactive.com)

@@ -1,18 +1,13 @@
 {
-  "name": "@focusreactive/storybook-addon-graphcms",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@focus-reactive/storybook-addon-graphcms",
+  "description": "Storybook addon for GraphQL and GraphCMS",
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
-    "@storybook/addon-actions": "^5.2.1",
     "@storybook/addon-devkit": "^1.2.4",
-    "@storybook/addon-links": "^5.2.1",
-    "@storybook/addons": "^5.2.1",
-    "@storybook/react": "^5.2.1",
-    "graphql-request": "^1.8.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "graphql-request": "^1.8.2"
   },
   "relativeDependencies": {
     "@storybook/addon-devkit": "../../theming/addon-development-kit"
@@ -43,8 +38,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@storybook/react": "^5.2.1",
     "babel-eslint": "^10.0.3",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.3.0",
@@ -57,6 +56,34 @@
     "prettier": "^1.5.3",
     "react-scripts": "3.2.0",
     "relative-deps": "^0.2.0",
-    "url-loader": "^2.2.0"
-  }
+    "url-loader": "^2.2.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "peerDependencies": {
+    "@storybook/react": "^5.2.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "homepage": "https://github.com/focusreactive/storybook-addon-graphcms",
+  "bugs": {
+    "url": "https://github.com/focusreactive/storybook-addon-graphcms/issues"
+  },
+  "author": "Oleg Proskurin <oleg@focusreactive.com> (https://github.com/focusreactive)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/focusreactive/storybook-addon-graphcms.git"
+  },
+  "keywords": [
+    "graphql",
+    "graphcms",
+    "query",
+    "queries",
+    "search",
+    "storybookjs",
+    "storybook-addon",
+    "addon",
+    "devtools"
+  ]
 }
