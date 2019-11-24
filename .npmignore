@@ -1,0 +1,8 @@
+/.storybook
+/node_modules
+/public
+/src
+/addon
+/docs
+.eslintrc.js
+.babelrc

@@ -17,3 +17,4 @@ const actions = ({ local }) => ({
 });
 
 register(selectors, actions)(PanelUI);
+console.log('test')

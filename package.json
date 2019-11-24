@@ -1,16 +1,14 @@
 {
   "name": "@focus-reactive/storybook-addon-graphcms",
   "description": "Storybook addon for GraphQL and GraphCMS",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "private": false,
+  "main": "dist/decorator.js",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@storybook/addon-devkit": "^1.2.4",
     "graphql-request": "^1.8.2"
-  },
-  "relativeDependencies": {
-    "@storybook/addon-devkit": "../../theming/addon-development-kit"
   },
   "scripts": {
     "start": "start-storybook -p 9009 -s public --ci",
@@ -19,8 +17,11 @@
     "lint:fix": "eslint . --fix",
     "build-storybook": "build-storybook -s public",
     "deploy": "storybook-to-ghpages",
-    "postinstall": "relative-deps",
-    "prestart": "relative-deps"
+    "prestart": "relative-deps",
+    "prepare": "package-prepare"
+  },
+  "packagePrepare": {
+    "src": "addon"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,12 +39,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
     "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-links": "^5.2.1",
     "@storybook/addons": "^5.2.1",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/react": "^5.2.1",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "@usulpro/package-prepare": "^1.2.1",
     "babel-eslint": "^10.0.3",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.3.0",
@@ -54,11 +58,14 @@
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^7.1.0",
     "prettier": "^1.5.3",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
     "relative-deps": "^0.2.0",
-    "url-loader": "^2.2.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "url-loader": "^2.2.0"
+  },
+  "relativeDependencies": {
+    "@storybook/addon-devkit": "../../theming/addon-development-kit"
   },
   "peerDependencies": {
     "@storybook/react": "^5.2.1",
