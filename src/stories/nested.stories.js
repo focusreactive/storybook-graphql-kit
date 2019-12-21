@@ -1,10 +1,7 @@
-import React from 'react';
 import { Query } from '../../addon/decorator';
 
-import UserAvatar from '../UserAvatar';
-
 export default {
-  title: 'with React Components',
+  title: 'with getData',
 };
 
 const viewId = 'e981e312fd6c48a39230de9193be4db9';
@@ -19,7 +16,6 @@ const imageUrlFragment = /* GraphQL */ `
 
 const speakerFragment = /* GraphQL */ `
   fragment speaker on PieceOfSpeakerInfo {
-    label
     speaker {
       name
       company

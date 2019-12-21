@@ -9,7 +9,7 @@ export const getCredentials = store => {
   return { endpoint, token };
 };
 
-export const getResult = store => store.result;
+export const getResult = store => store.rowResult;
 export const getError = store => store.queryError;
 export const getDataSelector = store => store.dataSelector;
 
