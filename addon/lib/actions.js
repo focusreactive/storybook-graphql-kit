@@ -23,7 +23,7 @@ export const contentRequest = async store => {
       );
     return {
       ...store,
-      result,
+      rowResult: data.result,
       queryError: null,
       loading: false,
     };

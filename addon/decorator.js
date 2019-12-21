@@ -7,16 +7,30 @@ import './config';
 const selectors = {
   info: store => JSON.stringify(store),
   isConnected: store => store.isConnected,
-  result: store => store.result,
+  rowResult: store => store.rowResult,
   error: getError,
   dataSelector: getDataSelector,
   viewCredentials: getViewCredentials,
   state: getRequestState,
 };
 
+const paramSelectors = {
+  result: (parameters, selectors) => {
+    const { getData } = parameters;
+    if (!getData) return selectors.rowResult;
+    try {
+      const params = getData(selectors.rowResult);
+      return params;
+    } catch(err) {
+      console.warn(err)
+      return selectors.rowResult
+    }
+  }
+}
+
 export const withGraphCMS = createDecorator({
   ...selectors,
-})(DecoratorUI, { isGlobal: false });
+}, {}, paramSelectors)(DecoratorUI, { isGlobal: false });
 
 export const QueryParams = setParameters();
 
