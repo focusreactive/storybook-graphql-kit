@@ -11,7 +11,6 @@ addDecorator(withGraphCMS({ endpoint: CMS_ENDPOINT, token: CMS_TOKEN, projectId:
 
 const theme = create({
   base: 'light',
-
   colorSecondary: '#fe7800',
   brandTitle: 'GitNation',
   brandUrl: 'https://gitnation.org/',

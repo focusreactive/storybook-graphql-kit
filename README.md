@@ -37,6 +37,12 @@ Same as previous but if you provide you project and view IDs it will be possible
 
 ![Screenshot3](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example3.png)
 
+## Quick Start
+
+Clone ready to use boilerplate project
+
+https://github.com/focusreactive/storybook-graphql-quick-start
+
 ## Usage
 
 Install addon
