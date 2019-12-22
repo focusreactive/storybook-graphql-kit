@@ -18,6 +18,8 @@ Develop your components in isolation with actual backend stored data. With this 
 
 ![Screenshot1](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example1.png)
 
+While you see your components in Storybook you can also inspect the query response in row JSON via addon Panel. You can even edit manually and temporrary override the result in order to quickly test your components with different values.
+
 ### 2. Browse database
 
 You can simply use Storybook and this addon for rapid development of tools to browse your GraphQL endpoint. Just write the queries for data you want to show and it will be outputted as a table. If you have arrays, nested objects or images inside your query it will be turned to friendly visible form. Good for documenting things withing your team.
@@ -166,8 +168,11 @@ Here we writing queries to control what exact entries should be listed in each f
 2. Expands nested objects to display in flat table
 3. Detects `url` fields with image sources and outputs them
 4. Input fields for GraphQL variables in the addon panel
-5. Handles GraphQL requests and renders story only with successfully received data
-6. Works fine with any GraphQL endpoint but provides additional features for GraphCMS services
+5. You can inspect and temporary override the response of your query in the addon panel
+6. Handles GraphQL requests and renders story only with successfully received data
+7. Works fine with any GraphQL endpoint but provides additional features for GraphCMS services
+
+![addon-panel](docs/panel-with-json.png)
 
 ## API
 
@@ -192,6 +197,8 @@ export const pages = Query({ ...options });
 `vars` - GraphQL variables
 
 `searchVars` - GraphQL variables you will set in the addon panel
+
+`getData: data => data.nested.objects` - function for switching to nested objects inside query response. (example: `data => data.year[0].speakers`)
 
 ### GraphCMS specific options:
 

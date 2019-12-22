@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Block } from '@storybook/addon-devkit';
 import { styled } from '@storybook/theming';
+import ReactJson from 'react-json-view'
 import SearchInputs from './SearchInputs';
 
 const LayoutBlock = styled(Layout)`
@@ -12,9 +13,10 @@ const AddonBlock = styled(Block)`
   border: 1px solid gray;
   margin: 2px;
   padding: 8px;
+  overflow: auto;
 `;
 
-const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, searchVars, search }) => {
+const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, searchVars, search, rowResult, onEdit }) => {
   React.useEffect(() => {
     if (isFirstDataReceived) {
       startRequest();
@@ -29,7 +31,9 @@ const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, search
       <AddonBlock size="30%">
         <SearchInputs search={searchVars} onChange={search} />
       </AddonBlock>
-      <AddonBlock />
+      <AddonBlock>
+      <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={60} onEdit={onEdit} /* onDelete={onEdit} */ />
+      </AddonBlock>
     </LayoutBlock>
   );
 };

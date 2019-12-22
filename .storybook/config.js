@@ -1,6 +1,6 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { create } from '@storybook/theming';
-import '@storybook/addon-console';
+// import '@storybook/addon-console';
 import { withGraphCMS } from '../addon/decorator';
 import brandImage from '../docs/logo.png';
 
