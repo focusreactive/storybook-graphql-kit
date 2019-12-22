@@ -1,7 +1,7 @@
 {
   "name": "@focus-reactive/storybook-addon-graphcms",
   "description": "Storybook addon for GraphQL and GraphCMS",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "main": "dist/decorator.js",
   "dependencies": {
