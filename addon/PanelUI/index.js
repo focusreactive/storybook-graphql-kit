@@ -16,7 +16,7 @@ const AddonBlock = styled(Block)`
   overflow: auto;
 `;
 
-const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, searchVars, search, rowResult }) => {
+const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, searchVars, search, rowResult, onEdit }) => {
   React.useEffect(() => {
     if (isFirstDataReceived) {
       startRequest();
@@ -32,7 +32,7 @@ const Panel = ({ startRequest, request, kind, story, isFirstDataReceived, search
         <SearchInputs search={searchVars} onChange={search} />
       </AddonBlock>
       <AddonBlock>
-      <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={30}/>
+      <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={60} onEdit={onEdit} /* onDelete={onEdit} */ />
       </AddonBlock>
     </LayoutBlock>
   );

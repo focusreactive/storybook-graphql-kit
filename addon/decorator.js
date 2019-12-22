@@ -16,12 +16,12 @@ const selectors = {
 
 const paramSelectors = {
   result: (parameters, selectors) => {
-    const { getData } = parameters;
-    if (!getData) return selectors.rowResult;
     try {
+      const { getData } = parameters;
+      if (!getData || !selectors.rowResult) return selectors.rowResult;
       const params = getData(selectors.rowResult);
       return params;
-    } catch(err) {
+    } catch (err) {
       console.warn(err)
       return selectors.rowResult
     }

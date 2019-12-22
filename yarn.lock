@@ -1501,9 +1501,9 @@
     global "^4.3.2"
 
 "@storybook/addon-devkit@^1.3.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-devkit/-/addon-devkit-1.3.1.tgz#66cfe278f8d239d477cde92ea6e354f6ffb0f705"
-  integrity sha512-NnDHOdZyDJU1c8e3CHjrWTAAPJs9UhCIfNRraEKEcFLOT5bfaAr2qMOLPWq5kgrsPJXNrZV08WaY1M3ps999sg==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-devkit/-/addon-devkit-1.3.2.tgz#87f12ab4322039d01ac1b73d1cc5edb039ba99ad"
+  integrity sha512-kBzUifd+UtW5VWdOfo6HfFZxe9C2z0L91hzc49BaRlLwZsHkM4BSm8mnuGZVfgChHNtKtL6UMWpm4RFoTcSeRw==
   dependencies:
     "@reach/rect" "^0.2.1"
     "@storybook/addons" "^5.0.11"
@@ -11468,14 +11468,14 @@ resolve@1.1.7:
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
   integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
-resolve@1.12.0, resolve@^1.1.6, resolve@^1.10.1, resolve@^1.11.0, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1:
+resolve@1.12.0, resolve@^1.1.6, resolve@^1.10.1, resolve@^1.11.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
   integrity sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.10.0:
+resolve@^1.10.0, resolve@^1.12.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.14.1.tgz#9e018c540fcf0c427d678b9931cbf45e984bcaff"
   integrity sha512-fn5Wobh4cxbLzuHaE+nphztHy43/b++4M6SsGFC2gB8uYwf0C8LcarfCz1un7UTW8OFQg9iNjZ4xpcFVGebDPg==

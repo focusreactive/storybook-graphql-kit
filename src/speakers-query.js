@@ -6,16 +6,16 @@ const query = /* GraphQL */ `
         name_contains: $name
       }
     ) {
-      id
-      bio
-      # name
-      talks {
-        title
-      }
+      name
       avatar {
         mimeType
         url
       }
+      bio
+      talks {
+        title
+      }
+      id
     }
   }
 `;

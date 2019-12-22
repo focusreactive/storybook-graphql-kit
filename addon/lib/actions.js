@@ -41,3 +41,9 @@ export const updateSearch = (store, searchVars) => ({
   ...store,
   searchVars,
 });
+
+export const editResult = (store, { updated_src }) => ({
+  ...store,
+  originalResult: store.rowResult,
+  rowResult: updated_src,
+})
