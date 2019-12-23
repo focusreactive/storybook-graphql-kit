@@ -4,7 +4,7 @@
 [![GraphQL](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/graphql.png)](https://graphql.org/)
 [![GraphCMS](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/graphcms-logo.png)](https://graphcms.com/)
 
-Write GraphQL queries and pass response data to your components **or just display them**
+Write queries in the code, preview GraphQL data in a comfy way, pass response to your components
 
 Read the [post on medium](https://medium.com/@focus-reactive/storybook-addon-graphcms-9d47e30371df)
 
@@ -19,6 +19,8 @@ Develop your components in isolation with actual backend stored data. With this 
 ![Screenshot1](https://raw.githubusercontent.com/focusreactive/storybook-addon-graphcms/master/docs/screenshot-example1.png)
 
 While you see your components in Storybook you can also inspect the query response in row JSON via addon Panel. You can even edit manually and temporrary override the result in order to quickly test your components with different values.
+
+![addon-panel](docs/panel-with-json.png)
 
 ### 2. Browse database
 
@@ -39,11 +41,20 @@ Same as previous but if you provide you project and view IDs it will be possible
 
 ## Quick Start
 
-Clone ready to use boilerplate project
+Clone ready to use boilerplate project. You can use it as a quick start for connecting to **any** GraphQL service. [Demo with Github GraphQL API](https://focusreactive.github.io/storybook-graphql-quick-start)
 
-https://github.com/focusreactive/storybook-graphql-quick-start
+```shell
+git clone https://github.com/focusreactive/storybook-graphql-quick-start.git
+cd storybook-graphql-quick-start
+yarn
+yarn start
+```
+
+See details: https://github.com/focusreactive/storybook-graphql-quick-start
 
 ## Usage
+
+Prerequisite: you need to have project with [installed](https://storybook.js.org/docs/guides/quick-start-guide/) Storybook
 
 Install addon
 
@@ -178,7 +189,6 @@ Here we writing queries to control what exact entries should be listed in each f
 6. Handles GraphQL requests and renders story only with successfully received data
 7. Works fine with any GraphQL endpoint but provides additional features for GraphCMS services
 
-![addon-panel](docs/panel-with-json.png)
 
 ## API
 
