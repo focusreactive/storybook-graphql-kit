@@ -42,7 +42,7 @@ const StyledTableCell = withStyles(theme => ({
   body: {
     fontSize: 14,
     '&:nth-of-type(odd)': {
-      opacity: 0.8,
+      // opacity: 0.8,
     },
   },
 }))(TableCell);
@@ -54,6 +54,45 @@ const StyledTableRow = withStyles(theme => ({
     },
   },
 }))(TableRow);
+
+const DataCard = ({ children, classes }) => <div className={classes.root}>
+  <div className={classes.card}>
+    {children}
+  </div>
+</div>
+
+const StyledDataCard = withStyles(theme => ({
+  root: {
+    height: 120,
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  card: {
+    position: 'absolute',
+    overflow: 'hidden',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'start',
+    alignItems: 'flex-end',
+    '&:hover': {
+      overflow: 'auto',
+      zIndex: 1000,
+      maxHeight: 'unset',
+      height: 'unset',
+      minHeight: '100%',
+      backgroundColor: 'white',
+      width: '200%',
+      maxWidth: 300,
+      boxShadow: '3px 3px 9px 1px grey',
+      padding: 6,
+      textAlign: 'left',
+      left: -6,
+      top: -6,
+    }
+  }
+}))(DataCard)
 
 const DefaultTable = ({ columns, rows, isLoading }) => {
   const classes = useStyles();
@@ -93,7 +132,9 @@ const DefaultTable = ({ columns, rows, isLoading }) => {
                 <StyledTableRow hover role="checkbox" tabIndex={-1} key={`${i}-${row.id}`}>
                   {row.columns.map((column, j) => (
                     <StyledTableCell key={`${i}-${column.id}`} align={column.align}>
-                      {column.render ? column.render() : column.getValue()}
+                      <StyledDataCard>
+                        {column.render ? column.render() : column.getValue()}
+                      </StyledDataCard>
                     </StyledTableCell>
                   ))}
                 </StyledTableRow>
