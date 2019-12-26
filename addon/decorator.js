@@ -14,10 +14,18 @@ const selectors = {
   state: getRequestState,
 };
 
+const getDataDefault = data => {
+  const keys = Object.keys(data)
+  if (keys.length === 1) {
+    return data[keys[0]]
+  }
+  return data
+}
+
 const paramSelectors = {
   result: (parameters, selectors) => {
     try {
-      const { getData } = parameters;
+      const { getData = getDataDefault } = parameters;
       if (!getData || !selectors.rowResult) return selectors.rowResult;
       const params = getData(selectors.rowResult);
       return params;

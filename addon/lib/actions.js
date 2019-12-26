@@ -16,14 +16,10 @@ export const contentRequest = async store => {
     const data = await request({ ...credentials, query, vars });
     if (!data)
       throw new Error(`No data from query\n\n${query}\n\nwith vars:\n\n${JSON.stringify(vars)}`);
-    const { result } = data;
-    if (!result)
-      throw new Error(
-        `Query should has alias \`result\` on the top level to extract data.\nInstead got:\n${data}`
-      );
+
     return {
       ...store,
-      rowResult: data.result,
+      rowResult: data,
       queryError: null,
       loading: false,
     };
