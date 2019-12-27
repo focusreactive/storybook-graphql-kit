@@ -1,0 +1,5 @@
+{
+  "watch": ["./addon/"],
+  "ext": "js",
+  "ignore": ["__tests__/**/"]
+}

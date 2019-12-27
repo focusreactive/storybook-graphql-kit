@@ -61,6 +61,7 @@ const DataCard = ({ children, classes }) => <div className={classes.root}>
   </div>
 </div>
 
+
 const StyledDataCard = withStyles(theme => ({
   root: {
     height: 120,
@@ -132,9 +133,9 @@ const DefaultTable = ({ columns, rows, isLoading }) => {
                 <StyledTableRow hover role="checkbox" tabIndex={-1} key={`${i}-${row.id}`}>
                   {row.columns.map((column, j) => (
                     <StyledTableCell key={`${i}-${column.id}`} align={column.align}>
-                      <StyledDataCard>
                         {column.render ? column.render() : column.getValue()}
-                      </StyledDataCard>
+                      {/* <StyledDataCard>
+                      </StyledDataCard> */}
                     </StyledTableCell>
                   ))}
                 </StyledTableRow>
