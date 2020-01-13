@@ -1,4 +1,4 @@
-import { renderLinkAction, renderImage } from './renderValues';
+import { renderImage } from './renderValues';
 
 const textColumnWidth = 300;
 const simpleColumnWidth = 100;
@@ -51,18 +51,6 @@ const simpleValue = ({ key, value, ind }) => {
   };
 };
 
-const idValue = ({ key, value, ind, options }) => {
-  const simple = simpleValue({ key, value, ind });
-  if (!simple) return null;
-  if (simple.id !== 'id') return null;
-
-  return {
-    ...simple,
-    getLabel: () => 'ID',
-    render: renderLinkAction({ entryId: value, ...options }),
-  };
-};
-
 const unknownValue = ({ key, value, ind }) => ({
   id: key,
   getLabel: () => `${key}`,
@@ -78,7 +66,7 @@ const unknownValue = ({ key, value, ind }) => ({
   render: null,
 });
 
-const valueTypesOrder = [arrayValue, imageValue, objectValue, idValue, simpleValue, unknownValue];
+const valueTypesOrder = [arrayValue, imageValue, objectValue, simpleValue, unknownValue];
 
 const extractEntry = (key, value, ind, options) => {
   // eslint-disable-next-line no-restricted-syntax

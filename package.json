@@ -1,7 +1,7 @@
 {
-  "name": "@focus-reactive/storybook-addon-graphcms",
-  "description": "Storybook addon for GraphQL and GraphCMS",
-  "version": "1.2.0",
+  "name": "@focus-reactive/storybook-graphql-kit",
+  "description": "Storybook addon for writing stories in GraphQL",
+  "version": "0.2.0",
   "private": false,
   "main": "dist/decorator.js",
   "dependencies": {
@@ -67,33 +67,32 @@
     "relative-deps": "^0.2.0",
     "url-loader": "^2.2.0"
   },
-  "relativeDependencies": {
-    "@storybook/addon-devkit": "../../theming/addon-development-kit"
-  },
   "peerDependencies": {
     "@storybook/react": "^5.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
-  "homepage": "https://github.com/focusreactive/storybook-addon-graphcms",
+  "homepage": "https://github.com/focus-reactive/storybook-graphql-kit",
   "bugs": {
-    "url": "https://github.com/focusreactive/storybook-addon-graphcms/issues"
+    "url": "https://github.com/focus-reactive/storybook-graphql-kit/issues"
   },
   "author": "Oleg Proskurin <oleg@focusreactive.com> (https://github.com/focusreactive)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/focusreactive/storybook-addon-graphcms.git"
+    "url": "https://github.com/focus-reactive/storybook-graphql-kit.git"
   },
   "keywords": [
     "graphql",
-    "graphcms",
+    "kit",
     "query",
     "queries",
     "search",
+    "storybook",
     "storybookjs",
     "storybook-addon",
     "addon",
-    "devtools"
+    "devtools",
+    "graphql-kit"
   ]
 }

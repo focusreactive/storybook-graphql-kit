@@ -36,7 +36,7 @@ const paramSelectors = {
   }
 }
 
-export const withGraphCMS = createDecorator({
+export const withGraphQL = createDecorator({
   ...selectors,
 }, {}, paramSelectors)(DecoratorUI, { isGlobal: false });
 

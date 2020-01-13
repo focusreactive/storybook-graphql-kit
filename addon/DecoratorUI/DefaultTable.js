@@ -134,8 +134,6 @@ const DefaultTable = ({ columns, rows, isLoading }) => {
                   {row.columns.map((column, j) => (
                     <StyledTableCell key={`${i}-${column.id}`} align={column.align}>
                         {column.render ? column.render() : column.getValue()}
-                      {/* <StyledDataCard>
-                      </StyledDataCard> */}
                     </StyledTableCell>
                   ))}
                 </StyledTableRow>
