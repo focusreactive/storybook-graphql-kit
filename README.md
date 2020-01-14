@@ -1,7 +1,7 @@
-# Storybook GraphQL Kit [![npm version](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit.svg)](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit)
+# Storybook GraphQL Kit [![npm version](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit.svg)](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit) [![Storybook](https://raw.githubusercontent.com/storybookjs/storybook-addon-console/master/docs/storybook.svg?sanitize=true)](https://focusreactive.github.io/storybook-graphql-kit)
 
-[![Storybook](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/storybook-logo.png)](https://storybook.js.org/)
-[![GraphQL](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/graphql.png)](https://graphql.org/)
+[![Storybook](https://raw.githubusercontent.com/focusreactive/storybook-graphql-kit/master/docs/storybook-logo.png)](https://storybook.js.org/)
+[![GraphQL](https://raw.githubusercontent.com/focusreactive/storybook-graphql-kit/master/docs/graphql.png)](https://graphql.org/)
 
 Write GraphQL queries and pass response data to your components **or just display them**
 
@@ -11,13 +11,13 @@ Write GraphQL queries and pass response data to your components **or just displa
 
 Develop your components in isolation with actual backend stored data. With this addon you can add query to your stories and use fetched data as props for your components. You are flexible to use it with a single component or return an array of components - everything you need is just to write stories.
 
-![Screenshot1](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/screenshot-example1.png)
+![Screenshot1](https://raw.githubusercontent.com/focusreactive/storybook-graphql-kit/master/docs/screenshot-example1.png)
 
 ### 2. Browse database
 
 You can simply use Storybook and this addon for rapid development of tools to browse your GraphQL endpoint. Just write the queries for data you want to show and it will be outputted as a table. If you have arrays, nested objects or images inside your query it will be turned to friendly visible form. Good for documenting things withing your team.
 
-![Screenshot2](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/screenshot-example2.png)
+![Screenshot2](https://raw.githubusercontent.com/focusreactive/storybook-graphql-kit/master/docs/screenshot-example2.png)
 
 
 ## Usage
@@ -242,4 +242,4 @@ To develop this project:
 
 2019
 
-[![FocusReactive](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/focusreactive-logo.svg?sanitize=true)](https://focusreactive.com)
+[![FocusReactive](https://raw.githubusercontent.com/focusreactive/storybook-graphql-kit/master/docs/focusreactive-logo.svg?sanitize=true)](https://focusreactive.com)
