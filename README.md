@@ -1,4 +1,4 @@
-# Storybook GraphQL kit
+# Storybook GraphQL Kit [![npm version](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit.svg)](https://badge.fury.io/js/%40focus-reactive%2Fstorybook-graphql-kit)
 
 [![Storybook](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/storybook-logo.png)](https://storybook.js.org/)
 [![GraphQL](https://raw.githubusercontent.com/UsulPro/storybook-graphql-kit/master/docs/graphql.png)](https://graphql.org/)
@@ -140,6 +140,10 @@ It does totally the same but in more compact way, especially if you only want to
 5. Handles GraphQL requests and renders story only with successfully received data
 6. Works fine with any GraphQL endpoint
 
+## Related Addons
+
+- [Storybook Addon GraphCMS](https://github.com/focusreactive/storybook-graphql-kit-graphcms) thin extension with GraphCMS features
+
 ## API
 
 You need to pass options to addon. You can pass them directly as story parameters, with `withGraphQL` decorator or with `Query` helper.
@@ -190,6 +194,34 @@ export const yourStory = ({ graphQlResponse }) => {
 
 `graphQlResponse.columns` and `graphQlResponse.rows` are useful if you creating own tool to display your GraphQL data. Otherwise use `graphQlResponse.result`.
 
+
+### Authoring Own Addons based on Storybook-GraphQL-Kit
+
+You can use API to extend this addon with your own representations of receiving data.
+
+```js
+import { withGraphQL } from '@focus-reactive/storybook-graphql-kit';
+
+const customRenderer = ({ key, value, ind, options }) => {
+  if (key !== 'featured field') return null;
+
+  return {
+    id: key,
+    getLabel: () => `${key}`,
+    getValue: () => value,
+    // return your custom React component or null for using `getValue`
+    render: () => <CustomComponent/>,
+  };
+};
+
+export const withYourServiceFeatures = withGraphQL
+   .addRender(customRenderer)
+   .addRender(customRenderer1)
+   .addRender(customRenderer2);
+
+```
+
+See https://github.com/focusreactive/storybook-graphql-kit-graphcms as example of how to extend and create new addon
 
 ## Contributing
 
