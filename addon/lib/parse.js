@@ -66,11 +66,18 @@ const unknownValue = ({ key, value, ind }) => ({
   render: null,
 });
 
-const valueTypesOrder = [arrayValue, imageValue, objectValue, simpleValue, unknownValue];
+const valueTypesOrder = [
+  arrayValue,
+  imageValue,
+  objectValue,
+  simpleValue,
+  unknownValue,
+];
 
 const extractEntry = (key, value, ind, options) => {
+  const { customRenders } = options;
   // eslint-disable-next-line no-restricted-syntax
-  for (const tryExtract of valueTypesOrder) {
+  for (const tryExtract of [...customRenders, ...valueTypesOrder]) {
     try {
       const entry = tryExtract({ key, value, ind, options });
       if (entry) return entry;
@@ -92,7 +99,9 @@ const flatMap = (array, fn) =>
 const extractColumns = options => keyObj => {
   const entries = Object.entries(keyObj);
 
-  const columns = flatMap(entries, (entry, i) => extractEntry(...entry, i, options));
+  const columns = flatMap(entries, (entry, i) =>
+    extractEntry(...entry, i, options)
+  );
 
   return columns;
 };

@@ -36,9 +36,32 @@ const paramSelectors = {
   }
 }
 
-export const withGraphQL = createDecorator({
-  ...selectors,
-}, {}, paramSelectors)(DecoratorUI, { isGlobal: false });
+const createExtendableDecorator = () => {
+  const rendersList = [];
+
+  const addRender = renderCb => {
+    rendersList.push(renderCb);
+    return decoratorWithRenders();
+  };
+
+  const decoratorWithRenders = () => {
+    const decorator = createDecorator(
+      {
+        ...selectors,
+        customRenders: () => rendersList,
+      },
+      {},
+      paramSelectors
+    )(DecoratorUI, { isGlobal: false });
+
+    decorator.addRender = addRender;
+    return decorator;
+  };
+
+  return decoratorWithRenders();
+};
+
+export const withGraphQL = createExtendableDecorator();
 
 export const QueryParams = setParameters();
 

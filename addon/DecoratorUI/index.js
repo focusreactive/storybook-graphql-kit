@@ -11,7 +11,7 @@ const theme = createMuiTheme({
   },
 });
 
-const DecoratorUI = ({ context, getStory, isConnected, result, viewCredentials, state }) => {
+const DecoratorUI = ({ context, getStory, isConnected, result, viewCredentials, state, customRenders }) => {
   if (!isConnected) {
     return null;
   }
@@ -19,7 +19,7 @@ const DecoratorUI = ({ context, getStory, isConnected, result, viewCredentials, 
   const isLoading = state === 'Loading';
   const isLoaded = state === 'Success';
 
-  const { columns, rows } = parseResult(result, { viewCredentials });
+  const { columns, rows } = parseResult(result, { viewCredentials, customRenders });
 
   if (isLoaded) {
     const story = getStory({ ...context, graphQlResponse: { result, columns, rows } });
