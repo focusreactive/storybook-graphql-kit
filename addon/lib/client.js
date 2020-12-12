@@ -2,9 +2,11 @@ const { GraphQLClient } = require('graphql-request');
 
 const createClient = ({ endpoint, token }) =>
   new GraphQLClient(endpoint, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
+    headers: token
+      ? {
+          authorization: `Bearer ${token}`,
+        }
+      : {},
   });
 
 export const request = async ({ endpoint, token, query, vars }) => {

@@ -3,7 +3,7 @@ export const getVars = store => ({ ...store.vars, ...store.searchVars });
 
 export const getCredentials = store => {
   const { endpoint, token } = store;
-  if (!endpoint || !token) {
+  if (!endpoint) {
     return null;
   }
   return { endpoint, token };
