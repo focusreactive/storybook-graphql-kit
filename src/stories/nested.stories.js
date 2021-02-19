@@ -34,10 +34,8 @@ const query = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear, $name: String) {
     result: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         openForTalks
         speakers: pieceOfSpeakerInfoes(orderBy: order_DESC, where: {speaker: {name_contains: $name}}) {
           ...speaker
@@ -56,5 +54,5 @@ export const ram = Query({
   vars: { conferenceTitle: 'React_Amsterdam', eventYear: 'Y2020' },
   searchVars: { name: '' },
   viewId,
-  getData: data => data.year[0].speakers
+  getData: data => console.log(data) || data.result.year[0].speakers
 });
