@@ -33,7 +33,7 @@ const query = /* GraphQL */ `
 
 export const ram = Query({
   name: 'React Amsterdam',
-  story: ({ graphQlResponse }) => {
+  story: ({ graphQlResponse } = {}) => {
     const data = graphQlResponse.result;
     if (!data) return null;
 

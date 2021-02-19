@@ -1,15 +1,15 @@
 {
   "name": "@focus-reactive/storybook-graphql-kit",
   "description": "Storybook addon for writing stories in GraphQL",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "main": "dist/decorator.js",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
-    "@storybook/addon-devkit": "^1.3.2",
+    "@storybook/addon-devkit": "^1.4.0",
     "graphql-request": "^1.8.2",
-    "react-json-view": "^1.19.1"
+    "react-json-view": "^1.21.1"
   },
   "scripts": {
     "start": "start-storybook -p 9009 -s public --ci",
@@ -43,13 +43,14 @@
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
-    "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-links": "^5.2.1",
-    "@storybook/addons": "^5.2.1",
-    "@storybook/react": "^5.2.1",
-    "@storybook/storybook-deployer": "^2.8.1",
-    "@usulpro/package-prepare": "^1.2.1",
+    "@babel/preset-env": "^7.12.17",
+    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-console": "^1.2.3",
+    "@storybook/addon-links": "^6.1.18",
+    "@storybook/addons": "^6.1.18",
+    "@storybook/react": "^6.1.18",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "@usulpro/package-prepare": "^1.3.1",
     "babel-eslint": "^10.0.3",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.3.0",
@@ -61,8 +62,8 @@
     "eslint-plugin-react": "^7.1.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.5.3",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-scripts": "3.2.0",
     "relative-deps": "^0.2.0",
     "url-loader": "^2.2.0"
