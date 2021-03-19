@@ -94,6 +94,10 @@
     "storybook-addon",
     "addon",
     "devtools",
-    "graphql-kit"
-  ]
+    "graphql-kit",
+    "data-state"
+  ],
+  "storybook": {
+    "displayName": "GraphQL Kit"
+  }
 }
